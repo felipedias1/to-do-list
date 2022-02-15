@@ -49,8 +49,19 @@ const updateTaskService = async (updateTask, taskId, userId) => {
 	return changedTask;
 };
 
+const deleteTaskService = async (taskId, userId) => {
+
+	const taskExists = await taskModel.getOneTaskByIdModel(taskId);
+	if (!taskExists) throw errorUtils(400, 'Task does not exists');
+
+	if (taskExists[0].userId !== userId) throw errorUtils(400, 'Unauthorized user');
+
+	await taskModel.deleteTaskModel(taskId);
+};
+
 module.exports = {
 	newTaskService,
 	getTaskService,
 	updateTaskService,
+	deleteTaskService,
 };

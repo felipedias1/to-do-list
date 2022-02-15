@@ -36,8 +36,21 @@ const updateTaskController = async (req, res, next) => {
 	}
 };
 
+const deleteTaskController = async (req, res, next) => {
+	try {
+		const { id: userId } = req.user;
+		const { id: taskId } = req.params;
+		await taskService.deleteTaskService(taskId, userId);
+		return res.status(204).json({ message: 'teste' });
+	} catch (error) {
+		console.log(error.message);
+		return next(error);
+	}
+};
+
 module.exports = {
 	newTaskController,
 	getTaskController,
 	updateTaskController,
+	deleteTaskController,
 };

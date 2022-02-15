@@ -35,9 +35,15 @@ const updateTaskModel = async (taskId, text, status ) => {
 	return updateTask ;
 };
 
+const deleteTaskModel = async (taskId) => {
+	const connect = await connection();
+	await connect.collection('tasks').deleteOne({ _id: ObjectId(taskId) });
+};
+
 module.exports = {
 	newTaskModel,
 	getTaskModel,
 	getOneTaskByIdModel,
-	updateTaskModel
+	updateTaskModel,
+	deleteTaskModel,
 };
