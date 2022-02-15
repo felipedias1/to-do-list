@@ -9,6 +9,7 @@ const newUserMod = async (newUser) => {
       email,
       password,
       role: 'user',
+      tasks: [],
   });
   return insertedId ;
 };
