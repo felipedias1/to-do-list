@@ -18,10 +18,9 @@ const newUserService = async (newUser) => {
 	const emailExists = await userModel.searchEmail(email);
 	if (emailExists) throw errorUtils(401, 'This email is already being used');
 
-	await userModel.newUserMod(newUser);
+	const id = await userModel.newUserMod(newUser);
 
-	const { password: _password, ...noPassword } = newUser;
-	const token = authService.genToken(noPassword);
+	const token = authService.genToken({ id, name, email });
 	return token;
 };
 
