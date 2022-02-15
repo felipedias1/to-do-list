@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post('/', auth, taskController.newTaskController);
 router.get('/', auth, taskController.getTaskController);
+router.put('/:id', auth, taskController.updateTaskController);
 
 module.exports = router;

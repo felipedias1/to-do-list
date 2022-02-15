@@ -23,7 +23,21 @@ const getTaskController = async (req, res, next) => {
 	}
 };
 
+const updateTaskController = async (req, res, next) => {
+	try {
+		const updateTask = req.body;
+		const { id: userId } = req.user;
+		const { id: taskId } = req.params;
+		const task = await taskService.updateTaskService(updateTask, taskId, userId);
+		return res.status(200).json(task);
+	} catch (error) {
+		console.log(error.message);
+		return next(error);
+	}
+};
+
 module.exports = {
 	newTaskController,
 	getTaskController,
+	updateTaskController,
 };
