@@ -13,6 +13,13 @@ const newUserMod = async (newUser) => {
   return insertedId ;
 };
 
+const searchEmail = async (email) => {
+  const connect = await connection();
+  const validateEmail = await connect.collection('users').findOne({ email });
+  return validateEmail;
+};
+
 module.exports = {
   newUserMod,
+  searchEmail,
 };
