@@ -14,10 +14,14 @@
   "dependencies": {
     "body-parse": "^0.1.0",
     "dotenv": "^16.0.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.2",
     "express-rescue": "^1.1.31",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.3.1"
+    "mongodb": "^4.3.1",
+    "prettier": "^2.5.1"
   },
   "devDependencies": {
     "chai": "^4.3.6",
