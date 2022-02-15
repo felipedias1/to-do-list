@@ -7,13 +7,13 @@ const taskSchema = JOI.object({
 	status: JOI.string().valid('pendente', 'em andamento', 'pronto').required(), 
 });
 
-const newTaskService = async (newTask) => {
+const newTaskService = async (newTask, userId) => {
 	const { text, status } = newTask;
 
 	const validate = taskSchema.validate({ text, status });
 	if (validate.error) throw errorUtils(400, validate.error.message);
 
-	const createTask = await taskModel.newTaskModel(newTask);
+	const createTask = await taskModel.newTaskModel(newTask, userId);
 	return createTask;
 };
 
