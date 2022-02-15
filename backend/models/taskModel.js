@@ -13,6 +13,13 @@ const newTaskModel = async (newTask, userId) => {
 	return insertedId ;
 };
 
+const getTaskModel = async (userId) => {
+	const connect = await connection();
+	const getAllTasks = await connect.collection('tasks').find({ userId }).toArray();
+	return getAllTasks ;
+};
+
 module.exports = {
 	newTaskModel,
+	getTaskModel
 };

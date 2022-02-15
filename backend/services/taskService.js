@@ -21,6 +21,16 @@ const newTaskService = async (newTask, userId, email) => {
 	return createTask;
 };
 
+const getTaskService = async (userId, email) => {
+
+	const userExists = await userModel.searchEmail(email);
+	if (!userExists) throw errorUtils(400, 'User does not exists');
+
+	const createTask = await taskModel.getTaskModel(userId);
+	return createTask;
+};
+
 module.exports = {
 	newTaskService,
+	getTaskService,
 };
