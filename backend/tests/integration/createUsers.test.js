@@ -4,12 +4,12 @@ const sinon = require('sinon');
 const { MongoClient } = require('mongodb');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
-const server = require('../../../src/api/app');
+const server = require('../../src/api/app');
 
 chai.use(chaiHttp);
 const { expect } = chai;
 
-describe('POST /api/users', () => {
+describe('POST /user', () => {
 	describe('when insert new user with success', () => {
 		let response = {};
 		const DBServer = new MongoMemoryServer();
