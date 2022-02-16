@@ -43,10 +43,6 @@ describe('GET /task', () => {
       response = await chai.request(server)
       .get('/task')
       .set('authorization', userResponse.body.token)
-      .send({
-        text: "test task", 
-        status: "em andamento" 
-      });
 		});
 
 		after(async () => {
