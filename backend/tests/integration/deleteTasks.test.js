@@ -112,7 +112,7 @@ describe('DELETE /task/:id', () => {
     it('object have "message" property', () => {
       expect(response.body).to.have.property('message');
 		});
-    
+
 	});
 
 });
