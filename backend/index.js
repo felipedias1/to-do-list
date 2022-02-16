@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const userRoutes = require('./routes/userRoutes');
-const taskRoutes = require('./routes/taskRoutes');
-const errorMiddleware = require('./middlewares/errorMiddleware');
+const userRoutes = require('./src/routes/userRoutes');
+const taskRoutes = require('./src/routes/taskRoutes');
+const errorMiddleware = require('./src/middlewares/errorMiddleware');
 
 app.use(express.json());
 

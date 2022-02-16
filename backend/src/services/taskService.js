@@ -39,9 +39,6 @@ const updateTaskService = async (updateTask, taskId, userId) => {
 	const taskExists = await taskModel.getOneTaskByIdModel(taskId);
 	if (!taskExists) throw errorUtils(400, 'Task does not exists');
 
-	console.log(taskExists[0].userId);
-	console.log(userId);
-
 	if (taskExists[0].userId !== userId) throw errorUtils(400, 'Unauthorized user');
 
 	const changedTask = await taskModel.updateTaskModel(taskId, text, status);
