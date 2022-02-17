@@ -21,10 +21,12 @@ const verifyLoginService = async (userData) => {
   if (!checkLogin || checkLogin.password !== password) throw errorUtils(400, 'Email or password invalid');
 
   const { password: _password, ...noPassword } = checkLogin;
+  const { _id: id, name } = noPassword
+  console.log(noPassword);
 
   const token = authService.genToken(noPassword);
 
-  return token;
+  return { token, id, name, email }
 };
 
 module.exports = {
